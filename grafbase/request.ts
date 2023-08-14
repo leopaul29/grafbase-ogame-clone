@@ -32,11 +32,17 @@ query GetPlanetById($id: ID!) {
     name
     metalMineLevel
     crystalMineLevel
-    owner {
-      id
-    }
-    createdAt
+    deuteriumMineLevel
     updatedAt
+    resources {
+      metal
+      crystal
+      deuterium
+      updatedAt
+    }
+    fleet {
+      lightFighterCount
+    }
   }
 }`;
 

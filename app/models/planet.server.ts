@@ -20,7 +20,6 @@ export async function getPlanets() {
 }
 
 export async function getPlanet(planetId: string) {
-  console.log('planetId', planetId);
   if (process.env.GRAFBASE_API_KEY && process.env.GRAFBASE_API_URL) {
     const headers = {
       'Content-Type': 'application/json',
@@ -34,7 +33,7 @@ export async function getPlanet(planetId: string) {
     };
     const response = await fetch(process.env.GRAFBASE_API_URL, requestOptions);
     const data = await response.json();
-    console.log('data', data);
+    console.log('data planet server', data);
     return { planet: data.data.planet };
   } else {
     return { planet: {} };
