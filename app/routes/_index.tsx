@@ -10,8 +10,8 @@ export const links: LinksFunction = () => [
 
 export const meta: V2_MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Grafbase Hackathon" },
+    { name: "description", content: "Ogame-like Remix App!" },
   ];
 };
 
@@ -20,15 +20,10 @@ export default function Index() {
     <div className="container">
       <div className="content">
         <h1>
-          Remix <span>Jokes!</span>
+          Grafbase Hackathon
         </h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="dashboard">Read Jokes</Link>
-            </li>
-          </ul>
-        </nav>
+        <p>Small Ogame-like app with Remix and Grafbase</p>
+        <Link to="planets">Go to planets</Link>
       </div>
     </div>
   );
