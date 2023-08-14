@@ -9,3 +9,8 @@ node_modules
 /public/build
 /api/index.js
 /api/index.js.map
+
+# Ignorer les fichiers metafile générés par Remix
+metafile.css.json
+metafile.js.json
+metafile.server.json
