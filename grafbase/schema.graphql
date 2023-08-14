@@ -2,17 +2,23 @@ type Planet @model {
   name: String!
   metalMineLevel: Int @default(value: 1)
   crystalMineLevel: Int @default(value: 1)
-  #updateDate: DateTime
+  deuteriumMineLevel: Int @default(value: 0)
+  resources: Resources
+  fleet: Fleet
   owner: User
+}
+
+type Resources @model {
+  metal: Int @default(value: 500)
+  crystal: Int @default(value: 500)
+  deuterium: Int @default(value: 100)
 }
 
 type Fleet @model {
   lightFighterCount: Int @default(value: 0)
-  owner: User
 }
 
 type User @model {
   name: String! @unique
-  planet: Planet
-  fleet: Fleet
+  planet: [Planet]
 }
