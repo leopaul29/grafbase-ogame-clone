@@ -1,11 +1,12 @@
 import type { LoaderArgs, LoaderFunction } from "@remix-run/node";
 import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import { getPlanet } from "~/models/planet.server";
-import styles from "../styles/planet.css";
+import { LinksFunction } from "@remix-run/react/dist/routeModules";
+import stylesUrl from "../styles/planet.css";
 
-export function links() {
-    return [{ rel: "stylesheet", href: styles }];
-}
+export const links: LinksFunction = () => [
+    { rel: "stylesheet", href: stylesUrl },
+];
 
 export const loader: LoaderFunction = async ({ params }: LoaderArgs) => params.id ? getPlanet(params.id) : { planet: null };
 

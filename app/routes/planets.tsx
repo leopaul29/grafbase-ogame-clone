@@ -1,9 +1,6 @@
 
-import { json } from "@remix-run/node";
 import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import { getPlanets } from "~/models/planet.server";
-
-// export const loader = async () => json({ planets: await getPlanets() });
 
 export const loader = async () => getPlanets();
 
@@ -29,6 +26,8 @@ export default function Planets() {
                 <main className="col-span-4 md:col-span-3">
                     <Outlet />
                 </main>
+            </div>
+            <div className="footer">Photo de <a href="https://unsplash.com/fr/@dariobroe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dario Brönnimann</a> sur <a href="https://unsplash.com/fr/photos/hNQwIirOseE?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
             </div>
         </div>
     );

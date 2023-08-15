@@ -9,23 +9,11 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import globalLargeStylesUrl from "./styles/global-large.css";
-import globalMediumStylesUrl from "./styles/global-medium.css";
 import globalStylesUrl from "./styles/global.css";
+import stylesUrl from "./styles/space.css";
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref },
-  ] : [{ rel: "stylesheet", href: globalStylesUrl },
-  {
-    rel: "stylesheet",
-    href: globalMediumStylesUrl,
-    media: "print, (min-width: 640px)",
-  },
-  {
-    rel: "stylesheet",
-    href: globalLargeStylesUrl,
-    media: "screen and (min-width: 1024px)",
-  },]),
+  { rel: "stylesheet", href: stylesUrl }, { rel: "stylesheet", href: globalStylesUrl },
 ];
 
 export default function App() {
