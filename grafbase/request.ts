@@ -35,12 +35,14 @@ query GetPlanetById($id: ID!) {
     deuteriumMineLevel
     updatedAt
     resources {
+      id
       metal
       crystal
       deuterium
       updatedAt
     }
     fleet {
+      id
       lightFighterCount
     }
   }
@@ -71,3 +73,23 @@ mutation UpgradeMetalMineByPlanetId($id: ID!) {
     }
   }
 }`;
+
+export const incrementLightFighterByfleetId = `
+mutation CreateLightFighterByPlanetId($id: ID!, $count: Int!) {
+  fleetUpdate(
+    by: {
+      id: $id
+    }
+    input: {
+      lightFighterCount: {
+        increment: $count
+      }
+    }
+  ) {
+    fleet {
+      id
+      lightFighterCount
+    }
+  }
+}
+`;
