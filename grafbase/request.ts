@@ -56,3 +56,18 @@ export const planetCollectionQuery = `{
     }
   }
 }`;
+
+export const upgradeMetalMineByPlanetId = `
+mutation UpgradeMetalMineByPlanetId($id: ID!) {
+  planetUpdate(by: {id: $id}
+    input: {
+      metalMineLevel: {increment:1}
+    }
+  ) {
+    planet {
+      name
+      id
+      metalMineLevel
+    }
+  }
+}`;

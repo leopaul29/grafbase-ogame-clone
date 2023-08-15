@@ -1,4 +1,8 @@
-import { PlanetByIdQuery, planetCollectionQuery } from 'grafbase/request';
+import {
+  PlanetByIdQuery,
+  planetCollectionQuery,
+  upgradeMetalMineByPlanetId
+} from 'grafbase/request';
 
 export async function getPlanets() {
   if (process.env.GRAFBASE_API_KEY && process.env.GRAFBASE_API_URL) {
@@ -33,7 +37,26 @@ export async function getPlanet(planetId: string) {
     };
     const response = await fetch(process.env.GRAFBASE_API_URL, requestOptions);
     const data = await response.json();
-    console.log('data planet server', data);
+    return { planet: data.data.planet };
+  } else {
+    return { planet: {} };
+  }
+}
+
+export async function upgradeMetalMine(planetId: string) {
+  if (process.env.GRAFBASE_API_KEY && process.env.GRAFBASE_API_URL) {
+    const headers = {
+      'Content-Type': 'application/json',
+      'x-api-key': process.env.GRAFBASE_API_KEY
+    };
+    const variables = { id: planetId };
+    const requestOptions = {
+      headers,
+      method: 'POST',
+      body: JSON.stringify({ query: upgradeMetalMineByPlanetId, variables })
+    };
+    const response = await fetch(process.env.GRAFBASE_API_URL, requestOptions);
+    const data = await response.json();
     return { planet: data.data.planet };
   } else {
     return { planet: {} };
